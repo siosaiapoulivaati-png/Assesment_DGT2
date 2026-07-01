@@ -14,17 +14,28 @@ def show_page2():
 page1 = tk.Frame(root, bg="lightblue")
 page1.pack(fill="both", expand=True)
 
+def save_flashcard():
+    card_text = blank_box.get()  # 1. Get the text from the entry box
+    
+    if card_text.strip() == "":  # 2. Check if the user typed nothing or just spaces
+        messagebox.showwarning("Empty Box", "Please type something before saving!")
+    else:
+        flashcards_list.append(card_text)  # 3. APPEND the text to our list
+        blank_box.delete(0, tk.END)        # 4. Clear the box so it's ready for the next card
+        
+        # 5. Show a success popup (optional, but helpful!)
+        messagebox.showinfo("Saved!", f"'{card_text}' added to your flashcards!\nTotal cards: {len(flashcards_list)}")
+        print("Current list of cards:", flashcards_list)  # Prints in your terminal to track it
 
-
-# This is a label of my text that when i run the code it there will be widget pop up called Main menu
+# This is a label of my text that when i run the code it there will be widget pop up called Main menu.....
 l_main_menu = tk.Label(page1, text="Main menu")
 l_main_menu.grid(row=0, column=0, columnspan= 2)
 
-# This is a button so when i run my code there will be a button called start and when i press on it there will be a function
+# This is a button so when i run my code there will be a button called start and when i press on it there will be a function.....
 btn_start = tk.Button(page1, text="Start", command=show_page2)
 btn_start.grid(row=3, column=0, columnspan=2)
 
-# This is a Label so when i run my code there will be a widget label called Name 
+# This is a Label so when i run my code there will be a widget label called Name....
 l_username = tk.Label(page1, text="Name:")
 l_username.grid(row=1, column=0)
 
